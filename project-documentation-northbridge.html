@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Controlling Dashboard | Project Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Northbridge brand colors from Excel dashboard */
+            --navy-dark: #1e3a5f;
+            --navy-medium: #2c4a6e;
+            --navy-light: #3d5a80;
+            --white: #ffffff;
+            --gray-light: #f5f7fa;
+            --gray-medium: #e8ecf1;
+            --gray-border: #d1d9e6;
+            --text-dark: #1e3a5f;
+            --text-medium: #4a5568;
+            --text-light: #718096;
+            --accent-gold: #c9a227;
+            --accent-green: #28a745;
+            --accent-red: #dc3545;
+            --accent-blue: #4a90d9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--gray-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Hero Section - Northbridge Navy */
+        .hero {
+            background: var(--navy-dark);
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid var(--accent-gold);
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .logo-text {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--white);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 700px;
+            margin: 0 auto 32px;
+        }
+
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tech-tag {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--white);
+            font-weight: 500;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--navy-dark);
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--navy-dark);
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            color: var(--navy-dark);
+            font-weight: 600;
+        }
+
+        p {
+            color: var(--text-medium);
+            margin-bottom: 14px;
+        }
+
+        /* KPI Cards - like Excel dashboard */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .kpi-card {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .kpi-card .label {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kpi-card .value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--navy-dark);
+        }
+
+        .kpi-card.highlight {
+            background: var(--navy-dark);
+        }
+
+        .kpi-card.highlight .label {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .kpi-card.highlight .value {
+            color: var(--white);
+        }
+
+        .kpi-card.negative .value {
+            color: var(--accent-red);
+        }
+
+        .kpi-card.positive .value {
+            color: var(--accent-green);
+        }
+
+        /* Screenshots */
+        .screenshot-grid {
+            display: grid;
+            gap: 24px;
+        }
+
+        .screenshot-item {
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            display: block;
+        }
+
+        .screenshot-info {
+            padding: 20px;
+            border-top: 1px solid var(--gray-medium);
+        }
+
+        .screenshot-info h3 {
+            margin-bottom: 6px;
+            color: var(--navy-dark);
+        }
+
+        .screenshot-info p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Data Model */
+        .model-diagram {
+            background: var(--navy-dark);
+            border-radius: 8px;
+            padding: 28px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .model-diagram pre {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.4;
+            white-space: pre;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--gray-border);
+            background: var(--white);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 14px 18px;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-medium);
+        }
+
+        th {
+            background: var(--navy-dark);
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        td code {
+            background: var(--gray-light);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.85rem;
+            color: var(--navy-dark);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: var(--gray-light);
+        }
+
+        /* Code Blocks */
+        .code-block {
+            background: var(--navy-dark);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 14px 0;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.7;
+        }
+
+        /* Skills List */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--white);
+            border: 1px solid var(--gray-border);
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+
+        .skill-item .check {
+            background: var(--accent-green);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .skill-item span:last-child {
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy-dark);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 4px solid var(--accent-gold);
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--white);
+            color: var(--navy-dark);
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .github-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        footer p {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .kpi-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .model-diagram pre {
+                font-size: 0.58rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="logo-text">NORTHBRIDGE</div>
+            <h1>Financial Controlling Dashboard</h1>
+            <p class="hero-subtitle">
+                Excel-based financial controlling model with Power Pivot for EPC/construction project portfolio. 
+                Features EAC/ETC variance analysis, WIP tracking, cash forecasting, and commitment management.
+            </p>
+            <div class="tech-stack">
+                <span class="tech-tag">Excel</span>
+                <span class="tech-tag">Power Pivot</span>
+                <span class="tech-tag">Power Query</span>
+                <span class="tech-tag">DAX</span>
+                <span class="tech-tag">Star Schema</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Project Overview -->
+        <section>
+            <h2>Project Overview</h2>
+            <p>
+                This project is a financial controlling model for a fictional EPC contractor called 
+                <strong>Northbridge Engineering & Construction Ltd.</strong> The company manages 66 industrial 
+                projects across USA regions.
+            </p>
+            <p>
+                The goal is to build a complete controlling model that shows real-world CFO/Controller reporting:
+            </p>
+            <ul style="color: var(--text-medium); margin-left: 20px; margin-bottom: 20px; line-height: 1.9;">
+                <li>Portfolio performance monitoring</li>
+                <li>Cost variance and EAC analysis</li>
+                <li>Cash flow and commitment tracking</li>
+            </ul>
+
+            <h3>Key Metrics</h3>
+            <div class="kpi-grid">
+                <div class="kpi-card highlight">
+                    <div class="label">BAC (Budget)</div>
+                    <div class="value">$916M</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="label">EAC (Estimate)</div>
+                    <div class="value">$821M</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="label">ETC (To Complete)</div>
+                    <div class="value">$13.8M</div>
+                </div>
+                <div class="kpi-card negative">
+                    <div class="label">EAC vs BAC</div>
+                    <div class="value">-$95.2M</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="label">Commitments</div>
+                    <div class="value">$9.9B</div>
+                </div>
+                <div class="kpi-card highlight">
+                    <div class="label">Open Commits</div>
+                    <div class="value">$5.1B</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Screenshots -->
+        <section>
+            <h2>Dashboard Screenshots</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot-item">
+                    <img src="https://raw.githubusercontent.com/mbimarban/Financial-Controlling-Dashboard-Excel/main/screenshots/Portfolio_Cockpit.PNG" alt="Portfolio Cockpit">
+                    <div class="screenshot-info">
+                        <h3>Portfolio Cockpit</h3>
+                        <p>Executive overview with Top Projects ranking and regional distribution chart.</p>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="https://raw.githubusercontent.com/mbimarban/Financial-Controlling-Dashboard-Excel/main/screenshots/CostEACCockpit.PNG" alt="Cost & EAC Cockpit">
+                    <div class="screenshot-info">
+                        <h3>Cost & EAC Cockpit</h3>
+                        <p>Variance analysis (EAC vs BAC), cash forecast with snapshot month selection.</p>
+                    </div>
+                </div>
+                <div class="screenshot-item">
+                    <img src="https://raw.githubusercontent.com/mbimarban/Financial-Controlling-Dashboard-Excel/main/screenshots/CasHCommCockpit.PNG" alt="Cash & Commitments Cockpit">
+                    <div class="screenshot-info">
+                        <h3>Cash & Commitments Cockpit</h3>
+                        <p>Commitment lifecycle tracking: Committed → Invoiced → Paid amounts over time.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Model -->
+        <section>
+            <h2>Data Model (Star Schema)</h2>
+            <p>
+                The model uses a <strong>star schema</strong> architecture. This is the best practice for 
+                Power Pivot analysis. It has 6 dimension tables and 6 fact tables.
+            </p>
+
+            <div class="model-diagram">
+                <pre>
+                        ┌─────────────────┐
+                        │   dim_company   │
+                        │   (1 row)       │
+                        └────────┬────────┘
+                                 │
+    ┌─────────────┐    ┌─────────┴─────────┐    ┌─────────────┐
+    │ dim_client  │    │                   │    │ dim_region  │
+    │ (9 rows)    │───▶│ fact_project_month│◀───│ (7 rows)    │
+    └─────────────┘    │   (1,344 rows)    │    └─────────────┘
+                       │                   │
+    ┌─────────────┐    └─────────┬─────────┘    ┌─────────────────┐
+    │dim_date_month│◀────────────┤              │fact_project_    │
+    │ (65 rows)   │              │              │contract (66)    │
+    └─────────────┘    ┌─────────┴─────────┐    └─────────────────┘
+                       │   dim_project     │
+    ┌─────────────┐    │   (66 rows)       │    ┌─────────────────┐
+    │ dim_vendor  │    └───────────────────┘    │fact_baseline_   │
+    │ (14 rows)   │                             │month (1,344)    │
+    └──────┬──────┘                             └─────────────────┘
+           │
+           ▼           ┌───────────────────┐    ┌─────────────────┐
+    ┌──────────────┐   │fact_forecast_     │    │fact_resource_   │
+    │fact_         │   │snapshot (156)     │    │plan_month(1,344)│
+    │commitments   │   └───────────────────┘    └─────────────────┘
+    │(793 rows)    │
+    └──────────────┘
+                </pre>
+            </div>
+
+            <h3>Dimension Tables</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Table</th>
+                            <th>Rows</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>dim_company</code></td>
+                            <td>1</td>
+                            <td>Company master (Northbridge Engineering)</td>
+                        </tr>
+                        <tr>
+                            <td><code>dim_client</code></td>
+                            <td>9</td>
+                            <td>Client / customer master</td>
+                        </tr>
+                        <tr>
+                            <td><code>dim_region</code></td>
+                            <td>7</td>
+                            <td>USA regions (Gulf Coast, West, South, etc.)</td>
+                        </tr>
+                        <tr>
+                            <td><code>dim_project</code></td>
+                            <td>66</td>
+                            <td>Project master with contract details</td>
+                        </tr>
+                        <tr>
+                            <td><code>dim_vendor</code></td>
+                            <td>14</td>
+                            <td>Vendor / subcontractor master</td>
+                        </tr>
+                        <tr>
+                            <td><code>dim_date_month</code></td>
+                            <td>65</td>
+                            <td>Calendar dimension (2022-2027)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-top: 28px;">Fact Tables</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Table</th>
+                            <th>Rows</th>
+                            <th>Grain</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>fact_project_month</code></td>
+                            <td>1,344</td>
+                            <td>Project × Month</td>
+                            <td>Main fact: earned, invoiced, cash, costs, WIP</td>
+                        </tr>
+                        <tr>
+                            <td><code>fact_project_contract</code></td>
+                            <td>66</td>
+                            <td>Project</td>
+                            <td>Contract values, budget, planned margin</td>
+                        </tr>
+                        <tr>
+                            <td><code>fact_baseline_month</code></td>
+                            <td>1,344</td>
+                            <td>Project × Month</td>
+                            <td>Planned progress and value</td>
+                        </tr>
+                        <tr>
+                            <td><code>fact_commitments</code></td>
+                            <td>793</td>
+                            <td>PO Line</td>
+                            <td>Purchase orders and payment tracking</td>
+                        </tr>
+                        <tr>
+                            <td><code>fact_forecast_snapshot</code></td>
+                            <td>156</td>
+                            <td>Snapshot × Month × Project</td>
+                            <td>Rolling EAC/cash forecasts</td>
+                        </tr>
+                        <tr>
+                            <td><code>fact_resource_plan_month</code></td>
+                            <td>1,344</td>
+                            <td>Project × Month</td>
+                            <td>Labor hours and cost planning</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Key Measures -->
+        <section>
+            <h2>Key Measures (DAX)</h2>
+            
+            <h3>Cost Performance</h3>
+            <div class="code-block">
+                <code>
+BAC = SUM(fact_project_contract[budget_total_cost_pln])<br>
+EAC = SUM(fact_forecast_snapshot[forecast_eac_cost])<br>
+ETC = [EAC] - [Actual Cost To Date]<br>
+EAC vs BAC = [EAC] - [BAC]
+                </code>
+            </div>
+
+            <h3>Revenue & Margin</h3>
+            <div class="code-block">
+                <code>
+Earned Revenue = SUM(fact_project_month[earned_revenue_pln])<br>
+Invoiced Revenue = SUM(fact_project_month[invoiced_revenue_pln])<br>
+Cash Received = SUM(fact_project_month[cash_received_pln])<br>
+WIP = [Earned Revenue] - [Invoiced Revenue]
+                </code>
+            </div>
+
+            <h3>Commitments</h3>
+            <div class="code-block">
+                <code>
+Committed Amount = SUM(fact_commitments[committed_amount])<br>
+Invoiced Amount = SUM(fact_commitments[invoiced_amount])<br>
+Paid Amount = SUM(fact_commitments[paid_amount])<br>
+Open Commitments = [Committed Amount] - [Paid Amount]
+                </code>
+            </div>
+        </section>
+
+        <!-- Technical Stack -->
+        <section>
+            <h2>Technical Stack</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Component</th>
+                            <th>Technology</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Data Model</td>
+                            <td>Star Schema (6 dimensions + 6 facts)</td>
+                        </tr>
+                        <tr>
+                            <td>ETL</td>
+                            <td>Power Query (folder import)</td>
+                        </tr>
+                        <tr>
+                            <td>Analysis</td>
+                            <td>Power Pivot (Data Model)</td>
+                        </tr>
+                        <tr>
+                            <td>Visualization</td>
+                            <td>Excel PivotCharts + Slicers</td>
+                        </tr>
+                        <tr>
+                            <td>Dashboards</td>
+                            <td>3 Cockpits (Portfolio, Cost/EAC, Cash)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Learning Objectives -->
+        <section>
+            <h2>Skills Demonstrated</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <span class="check">✓</span>
+                    <span>Star schema data modeling</span>
+                </div>
+                <div class="skill-item">
+                    <span class="check">✓</span>
+                    <span>Power Query ETL (folder import)</span>
+                </div>
+                <div class="skill-item">
+                    <span class="check">✓</span>
+                    <span>Power Pivot relationships</span>
+                </div>
+                <div class="skill-item">
+                    <span class="check">✓</span>
+                    <span>DAX measures</span>
+                </div>
+                <div class="skill-item">
+                    <span class="check">✓</span>
+                    <span>Financial KPIs (EAC, ETC, WIP)</span>
+                </div>
+                <div class="skill-item">
+                    <span class="check">✓</span>
+                    <span>Executive dashboard design</span>
+                </div>
+                <div class="skill-item">
+                    <span class="check">✓</span>
+                    <span>Variance analysis</span>
+                </div>
+                <div class="skill-item">
+                    <span class="check">✓</span>
+                    <span>Cash flow forecasting</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <a href="https://github.com/mbimarban/Financial-Controlling-Dashboard-Excel" class="github-link" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            View on GitHub
+        </a>
+        <p>Portfolio project for Financial Controller / Data Analyst role</p>
+    </footer>
+
+</body>
+</html>
