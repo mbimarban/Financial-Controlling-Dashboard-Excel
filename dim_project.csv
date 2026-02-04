@@ -1,0 +1,67 @@
+project_id,project_name,company_key,client_key,region_key,contract_type,currency,payment_terms_days,start_month_key,end_month_key
+P056,Plant Construction/Modernization 056,1,8,1,Lump Sum,PLN,45,202207,202309
+P036,Plant Construction/Modernization 036,1,4,7,Unit Rate,PLN,60,202207,202309
+P051,Plant Construction/Modernization 051,1,3,6,Cost+Fee,PLN,60,202207,202309
+P041,Plant Construction/Modernization 041,1,9,3,Lump Sum,PLN,30,202207,202406
+P061,Plant Construction/Modernization 061,1,9,1,Cost+Fee,PLN,75,202208,202307
+P021,Plant Construction/Modernization 021,1,6,4,Lump Sum,USD,75,202208,202407
+P011,Plant Construction/Modernization 011,1,8,7,Lump Sum,PLN,30,202208,202401
+P042,Plant Construction/Modernization 042,1,8,4,Cost+Fee,PLN,45,202209,202502
+P008,Plant Construction/Modernization 008,1,8,1,Unit Rate,PLN,90,202209,202408
+P039,Plant Construction/Modernization 039,1,7,7,Unit Rate,PLN,30,202209,202402
+P043,Plant Construction/Modernization 043,1,8,7,Unit Rate,PLN,45,202210,202503
+P027,Plant Construction/Modernization 027,1,7,2,Lump Sum,PLN,45,202210,202403
+P058,Plant Construction/Modernization 058,1,2,1,Lump Sum,PLN,75,202211,202504
+P046,Plant Construction/Modernization 046,1,5,1,Unit Rate,PLN,75,202212,202411
+P035,Plant Construction/Modernization 035,1,5,5,Cost+Fee,PLN,60,202212,202411
+P045,Plant Construction/Modernization 045,1,2,4,Lump Sum,PLN,60,202212,202402
+P006,Plant Construction/Modernization 006,1,8,2,Cost+Fee,PLN,30,202301,202406
+P053,Plant Construction/Modernization 053,1,8,1,Lump Sum,PLN,60,202301,202512
+P044,Plant Construction/Modernization 044,1,5,1,Lump Sum,PLN,45,202302,202404
+P052,Plant Construction/Modernization 052,1,3,4,Lump Sum,PLN,90,202303,202602
+P023,Plant Construction/Modernization 023,1,8,5,Lump Sum,PLN,60,202303,202408
+P062,Plant Construction/Modernization 062,1,6,1,Unit Rate,PLN,90,202304,202409
+P030,Plant Construction/Modernization 030,1,1,4,Unit Rate,PLN,60,202304,202503
+P012,Plant Construction/Modernization 012,1,2,2,Cost+Fee,PLN,60,202305,202504
+P014,Plant Construction/Modernization 014,1,6,3,Lump Sum,USD,30,202305,202404
+P040,Plant Construction/Modernization 040,1,7,7,Lump Sum,PLN,75,202305,202410
+P054,Plant Construction/Modernization 054,1,8,1,Unit Rate,PLN,45,202306,202505
+P017,Plant Construction/Modernization 017,1,1,5,Cost+Fee,EUR,90,202306,202408
+P048,Plant Construction/Modernization 048,1,3,1,Lump Sum,PLN,30,202306,202405
+P029,Plant Construction/Modernization 029,1,8,3,Cost+Fee,PLN,45,202307,202409
+P010,Plant Construction/Modernization 010,1,8,4,Cost+Fee,PLN,60,202308,202404
+P024,Plant Construction/Modernization 024,1,8,2,Lump Sum,PLN,45,202309,202608
+P007,Plant Construction/Modernization 007,1,1,4,Lump Sum,PLN,30,202309,202411
+P066,Plant Construction/Modernization 066,1,3,2,Unit Rate,PLN,60,202309,202502
+P038,Plant Construction/Modernization 038,1,7,5,Unit Rate,EUR,45,202309,202408
+P055,Plant Construction/Modernization 055,1,8,4,Lump Sum,PLN,30,202310,202409
+P031,Plant Construction/Modernization 031,1,8,1,Lump Sum,EUR,75,202310,202609
+P005,Plant Construction/Modernization 005,1,9,4,Unit Rate,EUR,90,202310,202503
+P022,Plant Construction/Modernization 022,1,4,3,Lump Sum,EUR,90,202311,202504
+P003,Plant Construction/Modernization 003,1,7,1,Lump Sum,PLN,45,202311,202501
+P015,Plant Construction/Modernization 015,1,6,1,Lump Sum,PLN,60,202311,202610
+P063,Plant Construction/Modernization 063,1,4,3,Lump Sum,PLN,60,202312,202511
+P064,Plant Construction/Modernization 064,1,4,7,Cost+Fee,EUR,60,202401,202412
+P049,Plant Construction/Modernization 049,1,7,7,Cost+Fee,PLN,75,202401,202506
+P057,Plant Construction/Modernization 057,1,7,2,Lump Sum,USD,45,202401,202612
+P028,Plant Construction/Modernization 028,1,3,6,Cost+Fee,PLN,30,202402,202501
+P047,Plant Construction/Modernization 047,1,8,5,Unit Rate,EUR,45,202404,202509
+P016,Plant Construction/Modernization 016,1,6,6,Lump Sum,PLN,30,202404,202503
+P037,Plant Construction/Modernization 037,1,3,3,Cost+Fee,PLN,45,202405,202507
+P004,Plant Construction/Modernization 004,1,8,6,Cost+Fee,PLN,30,202405,202604
+P025,Plant Construction/Modernization 025,1,6,2,Lump Sum,PLN,90,202406,202505
+P020,Plant Construction/Modernization 020,1,6,6,Cost+Fee,EUR,45,202406,202705
+P009,Plant Construction/Modernization 009,1,2,2,Cost+Fee,PLN,45,202407,202512
+P013,Plant Construction/Modernization 013,1,2,2,Lump Sum,PLN,45,202408,202510
+P032,Plant Construction/Modernization 032,1,4,4,Cost+Fee,PLN,45,202408,202507
+P059,Plant Construction/Modernization 059,1,9,1,Cost+Fee,EUR,75,202408,202607
+P050,Plant Construction/Modernization 050,1,1,4,Lump Sum,EUR,75,202408,202510
+P065,Plant Construction/Modernization 065,1,7,5,Lump Sum,PLN,45,202408,202507
+P002,Plant Construction/Modernization 002,1,7,5,Lump Sum,PLN,30,202409,202602
+P026,Plant Construction/Modernization 026,1,8,6,Cost+Fee,PLN,90,202409,202602
+P001,Plant Construction/Modernization 001,1,2,1,Lump Sum,PLN,30,202410,202603
+P033,Plant Construction/Modernization 033,1,6,4,Cost+Fee,PLN,30,202410,202512
+P019,Plant Construction/Modernization 019,1,3,5,Unit Rate,EUR,30,202411,202704
+P034,Plant Construction/Modernization 034,1,3,4,Lump Sum,PLN,45,202411,202604
+P060,Plant Construction/Modernization 060,1,2,7,Lump Sum,PLN,60,202412,202711
+P018,Plant Construction/Modernization 018,1,8,3,Cost+Fee,PLN,75,202412,202705
